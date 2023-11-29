@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/profile_pic"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/main_profile_1" />
+
+    <EditText
+        android:id="@+id/edit_text"
+        android:layout_width="324dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="16dp"
+        android:layout_toEndOf="@id/profile_pic"
+        android:hint="Enter"
+        android:inputType="textMultiLine" />
+
+    <TextView
+        android:id="@+id/counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_text"
+        android:layout_alignParentEnd="true"
+        android:text="0/140" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/counter"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="100dp"
+            android:layout_height="48dp"
+            android:text="Back" />
+
+        <Button
+            android:id="@+id/tweet_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="180dp"
+            android:text="Search" />
+
+
+
+    </LinearLayout>
+    <TableLayout
+    android:id="@+id/table_layout"
+    android:stretchColumns="*"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_weight="1" />
+
+
+
+
+
+</RelativeLayout>
+
