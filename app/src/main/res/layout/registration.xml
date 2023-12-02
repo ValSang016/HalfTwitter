@@ -78,6 +78,8 @@
 
     <!-- 아이디 만들기 -->
 
+    <!-- 중복 확인 버튼 -->
+
     <EditText
         android:id="@+id/id_write"
         android:layout_width="276dp"
@@ -87,14 +89,12 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="35dp"
         android:layout_marginLeft="35dp"
-        android:layout_marginTop="337dp"
+        android:layout_marginTop="323dp"
         android:background="@drawable/stroke"
         android:elevation="4dp"
         android:hint="아 이 디"
         android:textAlignment="center"
         android:textSize="20dp" />
-
-    <!-- 중복 확인 버튼 -->
 
     <Button
         android:id="@+id/check_id"
@@ -110,37 +110,22 @@
 
     <!-- 비밀번호 만들기 -->
 
+    <!-- 비밀번호 재확인 -->
+
     <EditText
         android:id="@+id/password_write"
         android:layout_width="351dp"
         android:layout_height="50dp"
+        android:layout_below="@+id/id_write"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="35dp"
-        android:layout_marginLeft="35dp"
-        android:layout_marginTop="399dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="37dp"
+        android:layout_marginLeft="37dp"
+        android:layout_marginTop="7dp"
         android:background="@drawable/stroke"
         android:elevation="4dp"
         android:hint="비 밀 번 호\n대문자, 소문자, 숫자를 포함해 10~20자리"
-        android:textAlignment="center"
-        android:textSize="15sp" />
-
-    <!-- 비밀번호 재확인 -->
-
-    <EditText
-        android:id="@+id/password_ok"
-        android:layout_width="351dp"
-        android:layout_height="50dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="35dp"
-        android:layout_marginLeft="35dp"
-        android:layout_marginTop="465dp"
-        android:background="@drawable/stroke"
-        android:elevation="4dp"
-        android:hint="비 밀 번 호 재입력"
         android:textAlignment="center"
         android:textSize="15sp" />
 
@@ -153,17 +138,18 @@
 
 
     <!-- 다음 버튼 -->
+
     <EditText
         android:id="@+id/phonenumber_write"
         android:layout_width="351dp"
         android:layout_height="50dp"
+        android:layout_below="@+id/phonenumber_write2"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="37dp"
-        android:layout_marginLeft="37dp"
-        android:layout_marginTop="605dp"
+        android:layout_marginStart="38dp"
+        android:layout_marginLeft="38dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/stroke"
         android:elevation="4dp"
         android:hint="전 화 번 호"
@@ -174,13 +160,13 @@
         android:id="@+id/phonenumber_write2"
         android:layout_width="351dp"
         android:layout_height="50dp"
+        android:layout_below="@+id/password_write"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="37dp"
-        android:layout_marginLeft="37dp"
-        android:layout_marginTop="534dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginLeft="41dp"
+        android:layout_marginTop="14dp"
         android:background="@drawable/stroke"
         android:elevation="4dp"
         android:hint="이 메 일"
@@ -202,20 +188,20 @@
         android:src="@drawable/signup_button"
         tools:ignore="SpeakableTextPresentCheck" />
 
+
+    <!-- 남자 체크 박스 -->
+
     <Button
         android:id="@+id/go_to_login"
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="151dp"
-        android:layout_marginBottom="23dp"
+        android:layout_marginEnd="38dp"
+        android:layout_marginBottom="25dp"
         android:elevation="4dp"
         android:text="다 음"
         android:textSize="16dp" />
-
-
-    <!-- 남자 체크 박스 -->
 
     <RadioGroup
         android:id="@+id/ckkmale"
@@ -254,6 +240,19 @@
         </RadioButton>
 
     </RadioGroup>
+
+    <Button
+        android:id="@+id/back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="299dp"
+        android:layout_marginBottom="22dp"
+        android:text="Back"
+        android:textColor="#ffffff" />
 
 </RelativeLayout>
 
