@@ -10,19 +10,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class login extends AppCompatActivity {
 
@@ -30,7 +22,6 @@ public class login extends AppCompatActivity {
     private EditText passwordEditText;
     private Button loginButton;
     private Button backButton;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +44,6 @@ public class login extends AppCompatActivity {
             }
         });
 
-
-
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,17 +53,27 @@ public class login extends AppCompatActivity {
             }
         });
     }
+
     class LoginAsyncTask extends AsyncTask<String, Void, Boolean> {
 
         @Override
         protected Boolean doInBackground(String... params) {
             String id = params[0];
             String password = params[1];
+            Connection connection = null;
 
             try {
-                Class.forName("com.mysql.jdbc.Driver");
-                Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/twitter", "root", "");
-                PreparedStatement statement = connection.prepareStatement("SELECT * FROM user WHERE user_id = ? AND password = ?");
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                connection = DriverManager.getConnection(
+                        "jdbc:mysql://10.0.2.2:3306/modelDB",
+                        "root", "1234");
+
+                if (connection != null) {
+                    Toast.makeText(login.this, "연결", Toast.LENGTH_SHORT).show();
+                }
+
+                PreparedStatement statement = connection.prepareStatement(
+                        "SELECT * FROM user WHERE user_id = ? AND password = ?");
                 statement.setString(1, id);
                 statement.setString(2, password);
                 ResultSet resultSet = statement.executeQuery();

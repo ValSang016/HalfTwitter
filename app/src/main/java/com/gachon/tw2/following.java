@@ -16,31 +16,31 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class others_board extends AppCompatActivity {
-    private TableLayout tableLayout; // 게시물을 추가할 TableLayout
-    private String id; // 검색된 사용자 아이디
+public class following extends AppCompatActivity {
+    private TableLayout tableLayout; // 팔로워를 추가할 TableLayout
+    private String id; // 사용자 아이디
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.others_board);
+        setContentView(R.layout.following);
 
         tableLayout = findViewById(R.id.table_layout);
 
         // Intent에서 아이디를 가져옵니다.
         id = getIntent().getStringExtra("id");
 
-        // 게시물을 가져와서 행을 생성하고 테이블 레이아웃에 추가하는 코드
-        new GetPostsAsyncTask().execute(id);
+        // 팔로워를 가져와서 행을 생성하고 테이블 레이아웃에 추가하는 코드
+        new GetFollowersAsyncTask().execute(id);
     }
 
-    class GetPostsAsyncTask extends AsyncTask<String, Void, List<String>> {
+    class GetFollowersAsyncTask extends AsyncTask<String, Void, List<String>> {
 
         @Override
         protected List<String> doInBackground(String... params) {
             String id = params[0];
             Connection connection = null;
-            List<String> posts = new ArrayList<>();
+            List<String> followers = new ArrayList<>();
 
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
@@ -49,13 +49,13 @@ public class others_board extends AppCompatActivity {
                         "root", "1234");
 
                 PreparedStatement statement = connection.prepareStatement(
-                        "SELECT content FROM post WHERE user_id = ?");
+                        "SELECT followed_id FROM follow WHERE following_id = ?");
                 statement.setString(1, id);
                 ResultSet resultSet = statement.executeQuery();
 
-                // 사용자의 모든 게시물을 가져옵니다.
+                // 사용자의 모든 팔로워를 가져옵니다.
                 while (resultSet.next()) {
-                    posts.add(resultSet.getString("post"));
+                    followers.add(resultSet.getString("follower_id"));
                 }
 
                 resultSet.close();
@@ -65,19 +65,20 @@ public class others_board extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            return posts;
+            return followers;
         }
 
         @Override
-        protected void onPostExecute(List<String> posts) {
-            for (String post : posts) {
-                // 각 게시물에 대해 행을 생성하고 테이블 레이아웃에 추가합니다.
-                TableRow tableRow = new TableRow(others_board.this);
-                TextView textView = new TextView(others_board.this);
-                textView.setText(post);
+        protected void onPostExecute(List<String> followers) {
+            for (String follower : followers) {
+                // 각 팔로워에 대해 행을 생성하고 테이블 레이아웃에 추가합니다.
+                TableRow tableRow = new TableRow(following.this);
+                TextView textView = new TextView(following.this);
+                textView.setText(follower);
                 tableRow.addView(textView);
                 tableLayout.addView(tableRow);
             }
         }
     }
 }
+
